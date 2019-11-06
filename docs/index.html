@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Platinum | Documentation</title>
+		<meta charset="utf-8">
+		<meta content="ie=edge" http-equiv="x-ua-compatible">
+		<meta content="template language" name="keywords">
+		<meta content="Native Theme" name="author">
+		<meta content="Documentation" name="description">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<link rel="stylesheet" href="assets/plugins/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="assets/css/main.css"/>
+		<script src="assets/plugins/jquery/jquery-2.1.1.min.js"></script>
+		<script src="assets/js/app.js"></script>
+	</head>
+	<body>
+		<div class="header">
+			<div class="content">
+				<div class="title">Platinum Documentation</div>
+				<div class="sub-title">Laravel & Vuejs SPA Admin Starter</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside class="side-nav">
+				<ul>
+					<li class="active"><a href="#overview">Overview</a></li>
+					<li><a href="#server-requirement">Server Requirement</a></li>
+					<li><a href="#installation-process">Installation Process</a></li>
+					<li><a href="#users">Users</a></li>
+					<li><a href="#menus">Menus</a></li>
+					<li><a href="#groups">Groups</a></li>
+					<li><a href="#privileges">Privileges</a></li>
+					<li>
+						<a href="#3rd-plugins">3rd Plugins</a>
+						<ul>
+							<li><a href="#exort-uploader">Exort Uploader</a></li>
+						</ul>
+					</li>
+					<li><a href="#changelog">Changelog</a></li>
+				</ul>
+			</aside>
+			<section class="main">
+				<h2 id="overview">Welcome</h2>
+				<p>
+					Thank you for purchasing our premium Platinum item. We will walk you through the installation and setup of this project. Hold tight, it will be quick and easy.
+				</p>
+				<h2 id="server-requirement">Server Requirement</h2>
+				<p>Before starting the installation, there are some things that you must to prepare. You will need to make sure your server meets the following requirements:</p>
+				<ul>
+					<li>PHP >= 5.6.4</li>
+					<li>OpenSSL PHP Extension</li>
+					<li>PDO PHP Extension</li>
+					<li>Mbstring PHP Extension</li>
+					<li>Tokenizer PHP Extension</li>
+					<li>XML PHP Extension</li>
+				</ul>
+				<p>If you have not set up your server, you can download XAMPP on following <a href="https://www.apachefriends.org/download.html">link</a>. Please download the latest version and install on your computer.</p>
+				<h2 id="installation-process">Installation Process</h2>
+				<p>To perform the installation, extract the downloaded zip file then copy the <b>"platinum"</b> folder to the root directory of your web server. These directories are usually named htdocs, www, public_html or others. Then import the <b>"platinum.sql"</b> database file to your local server.</p>
+				<p>The next step is to configure the database on your project. Open the <b>".env"</b> file in your project directory. Then adjust the following line with the configuration on your server.</p>
+				<pre>
+	DB_DATABASE=platinum // Your database name
+	DB_USERNAME=root // Your mysql username
+	DB_PASSWORD= // Your mysql user password
+				</pre>
+				<p>Cheers! Now you can access your project via browser. The following are the user account that have registered in the database that you can use to login.</p>
+				<p>
+					<b>Email</b> : johndoe@native-theme.com<br>
+					<b>Password</b> : 123456
+				</p>
+				<h2 id="users">Users</h2>
+				<p>We can create many users with different menu permissions. The following is a guide to create a new user.</p>
+				<img src="assets/images/users/1.png">
+				<p>Click <b>Add New User</b> to show user form.</p>
+				<img src="assets/images/users/2.png">
+				<p>Fill the form and select <b>Group</b> for this new user. Then click <b>save</b> to save user data.</p>
+				<img src="assets/images/users/3.png">
+				<p>New user has been successfully created. The menu permissions of this user will depend on the selected group.</p>
+				<h2 id="menus">Menus</h2>
+				<p>Because the menu in this project is dynamic and can be configured according to certain permissions, we need to make changes to the database to make changes to the menu. This section is a guide to adding new menus to this project.</p>
+				<p>First we have to access the table menus on the database. The table has several columns, this is an explanation of each of these columns.</p>
+				<b>id</b>
+				<p>This column is the primary key and auto increment, so we do not need to fill this field to add new menu.</p>
+				<b>parent_id</b>
+				<p>Every menu can have parent as much as 1 level, we can fill this column with parent menu id if menu we will add have parent menu or fill with 0 if not have parent menu.</p>
+				<b>child_count</b>
+				<p>Number of child of every menu.</p>
+				<b>title</b>
+				<p>The name of the menu that will appear in the menu list.</p>
+				<b>route_name</b>
+				<p>Route name used by vue router, adjust to the desired route.</p>
+				<b>params</b>
+				<p>Specific parameters that we need to sent to targeted menu. Use JSON format to fill this field.</p>
+				<b>query</b>
+				<p>Specific queries that we need to sent to targeted menu. Use JSON format to fill this field.</p>
+				<b>icon</b>
+				<p>The icon will appear on the menu title side.</p>
+				<h2 id="groups">Groups</h2>
+				<p>Group is used to group menu permissions from each user. You can create multiple groups to assign different menu access rights to each user. Here are the steps to create a new group.</p>
+				<img src="assets/images/groups/1.png">
+				<p>Click <b>Add New Group</b> to show group form.</p>
+				<img src="assets/images/groups/2.png">
+				<p>Fill the group name. Then click <b>save</b> to save group data.</p>
+				<img src="assets/images/groups/3.png">
+				<p>New group has been successfully created. Now we can setting a menu permissions for this group.</p>
+				<h2 id="privileges">Privileges</h2>
+				<p>In this section you can set the permissions of each existing group. To set the menu that appears or does not appear in a particular group, click on one of the groups on the left. Then check the menu that can be accessed on the menu option on the right.</p>
+				<img src="assets/images/privileges.png">
+				<h2 id="3rd-plugins">3rd Plugins</h2>
+				<p>In some parts of this project we use premium plugins, therefore we also attach documentation and complete examples of the usage of the plugin.</p>
+				<h3 id="exort-uploader">Exort Uploader</h3>
+				<p><a href="https://codecanyon.net/item/exort-jquery-file-picker-uploader-plugin/19820783">Exort uploader</a> is a very easy to use plugin, this plugin has a filepicker that makes it easier for us to choose the file that has been uploaded. It has complete documentation and sample code.</p>
+				<h2 id="changelog">Changelog</h2>
+				<p>
+					You'll find a list of all Platinum releases with a log of features added and bug fixes next to each one.
+					<p><b>Version 1.0 (March 20th, 2018)</b> - Initial Release</p>
+				</p>
+			</section>
+		</div>
+	</body>
+</html>

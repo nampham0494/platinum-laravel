@@ -1,0 +1,268 @@
+html, 
+body, 
+div, 
+span, 
+applet, 
+object, 
+iframe, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+blockquote, 
+pre, 
+a, 
+abbr, 
+acronym, 
+address, 
+big, 
+cite, 
+code, 
+del, 
+dfn, 
+em, 
+img, 
+ins, 
+kbd, 
+q, 
+s, 
+samp, 
+small, 
+strike, 
+strong, 
+sub, 
+sup, 
+tt, 
+var, 
+b, 
+u, 
+i, 
+center, 
+dl, 
+dt, 
+dd, 
+ol, 
+ul, 
+li, 
+fieldset, 
+form, 
+label, 
+legend, 
+table, 
+caption, 
+tbody, 
+tfoot, 
+thead, 
+tr, 
+th, 
+td, 
+article, 
+aside, 
+canvas, 
+details, 
+embed, 
+figure, 
+figcaption, 
+footer, 
+header, 
+hgroup, 
+menu, 
+nav, 
+button, 
+output, 
+ruby, 
+section, 
+summary, 
+time, 
+mark, 
+audio, 
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    text-decoration: none;
+    list-style: none;
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+	-ms-transform: $transform;
+	transform: $transform;
+}
+@mixin transform-origin($transform-origin) {
+    -webkit-transform-origin: $transform-origin;
+	-ms-transform-origin: $transform-origin;
+	transform-origin: $transform-origin;
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    -ms-box-shadow: $shadow;
+    -o-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin user-select($select) {
+    -webkit-user-select: $select;
+    -moz-user-select: $select;
+    -ms-user-select: $select;
+    -o-user-select: $select;
+    user-select: $select;
+}
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin background-gradient($direction, $first-color, $second-color) {
+    background: -webkit-linear-gradient($direction, $first-color, $second-color);
+    background: -moz-linear-gradient($direction, $first-color, $second-color);
+    background: -ms-linear-gradient($direction, $first-color, $second-color);
+    background: -o-linear-gradient($direction, $first-color, $second-color);
+    background: linear-gradient($direction, $first-color, $second-color);
+}
+
+body {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.header {
+	width: 100%;
+	color: #fff;
+	position: relative;
+	padding: 110px 0px;
+	@include background-gradient(left, #1E88E5, #512DA8);
+	.content {
+		padding: 0px 100px;
+		text-align: right;
+		.title {
+			font-size: 40px;
+		}
+		.sub-title {
+			margin-top: 5px;
+		}
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 100%;
+		height: 500px;
+		background: #fff;
+		@include transform(skewY(2deg));
+		@include transform-origin(right);
+	}
+}
+.wrapper {
+    padding: 0px 100px;
+	position: relative;
+    margin-top: 50px;
+    @include flexbox;
+    .side-nav {
+        ul {
+            width: 200px;
+        }
+        .active {
+            font-weight: bold;
+        }
+        a {
+            color: #263238;
+            display: block;
+            margin-top: 15px;
+        }
+        ul ul {
+            padding: 0 0 0.5em 1.5em;
+            font-size: 90%;
+        }
+    }
+    .main {
+        h2 {
+            margin: 3em 0 1em 0;
+            padding-bottom: 0.25em;
+            font-size: 2em;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            &:first-of-type {
+                margin-top: 0px;
+            }
+        }
+        p {
+            line-height: 1.5em;
+            margin: 0.5em 0 1.5em 0;
+        }
+        code {
+            padding: 2px 5px;
+            background: #F4F5F6;
+            color: #66676E;
+        }
+        pre {
+            line-height: 1.5em;
+            padding: 1em;
+            margin-bottom: 1.5em;
+            overflow: auto;
+            min-height: 56px;
+            max-height: 70vh;
+            -moz-tab-size: 4;
+            tab-size: 4;
+            background: #F4F5F6;
+            color: #66676E;
+        }
+        b {
+            font-weight: bold;
+        }
+        ul {
+            padding-left: 2em;
+            margin: 0.5em 0 1.5em 0;
+            li {
+                margin-top: 5px;
+                list-style-type: disc;
+            }
+        }
+        h3 {
+            margin-top: 2em;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+        .important {
+            color: #fff;
+            background: #263238;
+            display: inline-block;
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+        img {
+            display: block;
+            margin-bottom: 20px;
+            border: 7px solid #fafafa;
+        }
+    }
+}
+
+
+
+
+
